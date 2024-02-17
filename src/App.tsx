@@ -21,7 +21,7 @@ function App() {
   const [searchQueries, setSearchQueries] = useState<string[]>([""]);
   const [openModal, setOpenModal] = useState(false);
   // console.log(openModal, "openModal");
-  // console.log(searchQueries, "searchQueries");
+  console.log(searchQueries, "searchQueries");
   // const [movieId, setMovieId] = useState<string>();
   const [loading, setLoading] = useState(false);
   const [loadingSingle, setLoadingSingle] = useState(false);
@@ -143,6 +143,8 @@ function App() {
         {searchQueries &&
           searchQueries
             .filter((item: any) => item !== "" || null)
+            .reverse()
+            .filter((item, index, self) => self.indexOf(item) === index)
             .slice(0, 5)
             .map((data: any) => {
               // console.log(data, "data");
